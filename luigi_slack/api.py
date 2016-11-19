@@ -131,7 +131,8 @@ class SlackBot(object):
         return SlackMessage(title=title, fields=messages, success=success)
 
     def _only_success(self):
-        return len(self.event_queue[SUCCESS]) == len(self.event_queue[START])
+        #return len(self.event_queue[SUCCESS]) == len(self.event_queue[START])
+        return (len(self.event_queue[MISSING]) == 0) and (len(self.event_queue[FAILURE]) == 0)
 
     def _event_messages(self):
         messages = {}
